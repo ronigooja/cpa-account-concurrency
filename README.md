@@ -25,6 +25,14 @@ authenticated Management Center view of account usage.
 - No credential JSON, provider token, password, authority key, or Management key
   is returned by the plugin API or rendered in the usage table.
 
+## Weighted-routing integration
+
+This fork intentionally does not advertise the optional scheduler capability.
+Credential selection remains with CLIProxyAPI's built-in weighted round-robin
+router, so a separate weight-management plugin can adjust credential weights.
+This plugin enforces the per-account lease after selection and returns a local
+capacity error when the selected account has reached its limit.
+
 ## Compatibility
 
 - Host: CLIProxyAPI/CPA with the native plugin ABI and request-lifecycle support.
